@@ -1,15 +1,11 @@
-import * as types from '../actions/types';
+import {combineReducers} from 'redux';
 
-const initialState = {
-  articles: [],
-  selectedTopic: null
-};
+import reducerArticles from './articles.reducer';
+import reducerTopics from './topics.reducer';
 
-function reducer (prevState = initialState, action) {
-  const newState = Object.assign({}, prevState);
-
-
-  return newState;
-}
+const reducer = combineReducers({
+    articles: reducerArticles,
+    topics: reducerTopics
+});
 
 export default reducer;

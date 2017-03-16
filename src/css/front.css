@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #0B0C0C;
+}
+header {
+    padding: 10px 0 ;
+    margin-bottom: 20px;
+    background-color: #000;
+}
+
+.logo {
+    width: 190px;
+}
+.navbar-topics {
+    margin-bottom: 20px;
+}
