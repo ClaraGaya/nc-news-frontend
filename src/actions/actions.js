@@ -6,40 +6,82 @@ import {ROOT} from '../../config';
 // Action creator for fetching articles
 export function fetchAllArticles (){
     return function (dispatch) {
-        dispatch(fetchArticlesRequest());
+        dispatch(fetchAllArticlesRequest());
         axios
             .get(`${ROOT}/articles`)
             .then(res => {
                 // do something with the response
-                dispatch(fetchArticlesSuccess(res.data.articles));
+                dispatch(fetchAllArticlesSuccess(res.data.articles));
             })
             .catch(err => {
                 // do something with error
-                dispatch(fetchArticlesError(err));
+                dispatch(fetchAllArticlesError(err));
             })
     };
 }
 
-export function fetchArticlesRequest () {
+export function fetchAllArticlesRequest () {
     return {
-        type: types.FETCH_ARTICLES_REQUEST
+        type: types.FETCH_ALL_ARTICLES_REQUEST
     };
 }
 
-export function fetchArticlesSuccess (articles) {
+export function fetchAllArticlesSuccess (articles) {
     return {
-        type: types.FETCH_ARTICLES_SUCCESS,
+        type: types.FETCH_ALL_ARTICLES_SUCCESS,
         data: articles
     };
 }
 
-export function fetchArticlesError (err) {
+export function fetchAllArticlesError (err) {
     return {
-        type: types.FETCH_ARTICLES_ERROR,
+        type: types.FETCH_ALL_ARTICLES_ERROR,
         data: err
     };
 }
 
+
+// Action creator for fetching one specific article
+export function fetchArticle (id){
+    console.log(id)
+    return function (dispatch) {
+        dispatch(fetchArticleRequest(id));
+        axios
+            .get(`${ROOT}/articles/`)
+            .then(res => {
+                // do something with the response
+
+                dispatch(fetchArticleSuccess(res.data.articles.filter((article) => {
+                    return article._id === id;
+                }) 
+                ));
+            })
+            .catch(err => {
+                // do something with error
+                dispatch(fetchArticleError(err));
+            })
+    };
+}
+
+export function fetchArticleRequest () {
+    return {
+        type: types.FETCH_ARTICLE_REQUEST
+    };
+}
+
+export function fetchArticleSuccess (article) {
+    return {
+        type: types.FETCH_ARTICLE_SUCCESS,
+        data: article
+    };
+}
+
+export function fetchArticleError (err) {
+    return {
+        type: types.FETCH_ARTICLE_ERROR,
+        data: err
+    };
+}
 
 
 // Action creator for fetching topics

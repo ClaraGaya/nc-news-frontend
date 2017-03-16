@@ -20,6 +20,7 @@
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-react": "^6.10.0",
     "react-logger": "^1.1.0",
+    "redux-logger": "^2.8.2",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",

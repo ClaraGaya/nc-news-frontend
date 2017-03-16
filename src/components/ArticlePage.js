@@ -1,33 +1,43 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchAllArticles} from '../actions/actions';
+import {fetchArticle} from '../actions/actions';
 
 const ArticlePage = React.createClass({
   componentDidMount () {
-    this.props.getArticles();
+    this.props.getArticle(this.props.params.article_id);
   },
   render () {
-    return (
-      <div className="container">
-        <p>hello</p>
-        <h3 className='title is-3'>{props.title}</h3>
-        <p className=''>{props.body}</p>
-      </div>
-    );
+    console.log(this.props.article)
+
+    if (this.props.loading) return <p>'Loading...'</p>;
+    if (this.props.error) return <p>404</p>;
+    if (this.props.article) {
+      return (
+        <div className="container">
+          <p>{this.props.article.belongs_to}</p>
+          <h3 className='title is-3'>{this.props.article.title}</h3>
+          <p className=''><strong>{this.props.article.created_by}</strong></p>
+          <p className=''>{this.props.article.body}</p>
+        </div>
+      );
+    }
+      
   }
 });
 
 function mapDispatchToProps (dispatch) {
   return {
-    getArticles: () => {
-      dispatch(fetchAllArticles());
+    getArticle: (id) => {
+      dispatch(fetchArticle(id));
     }
   };
 }
 
 function mapStateToProps (state) {
   return {
-    articles: state.articles.data
+    article: state.article.data[0],
+    loading: state.article.loading,
+    error: state.article.error,
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);

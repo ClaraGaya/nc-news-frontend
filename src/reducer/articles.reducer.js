@@ -9,16 +9,16 @@ const initialState = {
 function reducerArticles (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
   
-  if (action.type === types.FETCH_ARTICLES_REQUEST) {
+  if (action.type === types.FETCH_ALL_ARTICLES_REQUEST) {
     newState.loading = true;
   }
 
-  if (action.type === types.FETCH_ARTICLES_SUCCESS) {
+  if (action.type === types.FETCH_ALL_ARTICLES_SUCCESS) {
     newState.data = action.data;
     newState.loading = true;
   }
 
-  if (action.type === types.FETCH_ARTICLES_ERROR) {
+  if (action.type === types.FETCH_ALL_ARTICLES_ERROR) {
     newState.error = action.data;
     newState.loading = false;
   }
