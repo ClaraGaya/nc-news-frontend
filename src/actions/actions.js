@@ -16,7 +16,7 @@ export function fetchAllArticles (){
             .catch(err => {
                 // do something with error
                 dispatch(fetchAllArticlesError(err));
-            })
+            });
     };
 }
 
@@ -85,7 +85,7 @@ export function fetchArticleError (err) {
 
 
 // Action creator for fetching topics
-export function fetchAllTopics (){
+export function fetchAllTopics () {
     return function (dispatch) {
         dispatch(fetchTopicsRequest());
         axios
@@ -98,7 +98,7 @@ export function fetchAllTopics (){
             .catch(err => {
                 // do something with error
                 dispatch(fetchTopicsError(err));
-            })
+            });
     };
 }
 
@@ -122,39 +122,52 @@ export function fetchTopicsError (err) {
     };
 }
 
+// export function voteArticle (id, vote) {
+//     return function (dispatch) {
+//         dispatch(voteArticleRequest());
+//         axios.put(`${ROOT}/articles/${id}?vote=${vote}`)
+//         .then((res) => {
+//             dispatch(voteArticleSuccess(res.data));
+//         })
+//         .catch((error) => {
+//             dispatch(voteArticleError(error.message));
+//         });        
+//     };
+// }
 
 
-// Action creator for voting up and article
-export function voteArticle (id, vote){
-    return function (dispatch) {
-        dispatch(voteArticleRequest());
-        axios
-            .put(`${ROOT}/articles/${id}?vote=${vote}`)
-            then.(res => {
-                // do something with the response
-                dispatch(voteArticleSuccess(res.data));
-            })
-            .catch(err => {
-                // do something with error
-                dispatch(voteArticleError(err));
-            })
-    };
-}
 
-export function voteArticleRequest(){
-    return {
-        type: types.VOTE_ARTICLE_REQUEST
-    }
-}
-export function voteArticleSuccess(){
-    return {
-        type: types.VOTE_ARTICLE_SUCCESS,
-        data:data
-    }
-}
-export function voteArticleError(){
-    return {
-        type: types.VOTE_ARTICLE_ERROR,
-        data:err
-    }
-}
+
+
+// // Action creator for voting up and article
+// export function voteArticle (id, vote){
+//     return function (dispatch) {
+//         dispatch(voteArticleRequest());
+//         axios
+//             .put(`${ROOT}/articles/${id}?vote=${vote}`)
+//             .then((res) => {
+//                 dispatch(voteArticleSuccess(res.data));
+//              })
+//              .catch((error) => {
+//                  dispatch(voteArticleError(error.message));
+//             });
+//     };
+// }
+
+// export function voteArticleRequest(){
+//     return {
+//         type: types.VOTE_ARTICLE_REQUEST
+//     }
+// }
+// export function voteArticleSuccess(){
+//     return {
+//         type: types.VOTE_ARTICLE_SUCCESS,
+//         data
+//     }
+// }
+// export function voteArticleError(){
+//     return {
+//         type: types.VOTE_ARTICLE_ERROR,
+//         data:err
+//     }
+// }
