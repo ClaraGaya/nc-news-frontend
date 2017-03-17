@@ -122,52 +122,37 @@ export function fetchTopicsError (err) {
     };
 }
 
-// export function voteArticle (id, vote) {
-//     return function (dispatch) {
-//         dispatch(voteArticleRequest());
-//         axios.put(`${ROOT}/articles/${id}?vote=${vote}`)
-//         .then((res) => {
-//             dispatch(voteArticleSuccess(res.data));
-//         })
-//         .catch((error) => {
-//             dispatch(voteArticleError(error.message));
-//         });        
-//     };
-// }
+// Action creator for voting articles
+export function voteArticle (id, vote) {
+    return function (dispatch) {
+        dispatch(voteArticleRequest());
+        axios.put(`${ROOT}/articles/${id}?vote=${vote}`)
+        .then((res) => {
+            dispatch(voteArticleSuccess(res.data));
+        })
+        .catch((error) => {
+            dispatch(voteArticleError(error.message));
+        });        
+    };
+}
 
+function voteArticleRequest () {
+    return {
+        type: types.VOTE_ARTICLE_REQUEST
+    };
+}
 
+function voteArticleSuccess (data) {
+    return {
+        type: types.VOTE_ARTICLE_SUCCESS,
+        data
+    };
+}
 
+function voteArticleError (error) {
+    return {
+        type: types.VOTE_ARTICLE_ERROR,
+        error
+    };
+}
 
-
-// // Action creator for voting up and article
-// export function voteArticle (id, vote){
-//     return function (dispatch) {
-//         dispatch(voteArticleRequest());
-//         axios
-//             .put(`${ROOT}/articles/${id}?vote=${vote}`)
-//             .then((res) => {
-//                 dispatch(voteArticleSuccess(res.data));
-//              })
-//              .catch((error) => {
-//                  dispatch(voteArticleError(error.message));
-//             });
-//     };
-// }
-
-// export function voteArticleRequest(){
-//     return {
-//         type: types.VOTE_ARTICLE_REQUEST
-//     }
-// }
-// export function voteArticleSuccess(){
-//     return {
-//         type: types.VOTE_ARTICLE_SUCCESS,
-//         data
-//     }
-// }
-// export function voteArticleError(){
-//     return {
-//         type: types.VOTE_ARTICLE_ERROR,
-//         data:err
-//     }
-// }

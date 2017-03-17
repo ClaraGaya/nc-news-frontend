@@ -13,9 +13,9 @@ function normaliseData (data) {
     }, {});
 }
 
-export function getTopArticles (state, num) {
-    return Object.keys(state.articles.byId).reduce(function (acc, id) {
-        return acc.concat(state.articles.byId[id]);
+export function getTopArticles (articles, num) {
+    return Object.keys(articles.byId).reduce(function (acc, id) {
+        return acc.concat(articles.byId[id]);
     }, []).sort(function (a, b) {
         return b.votes - a.votes;
     }).slice(0, num);

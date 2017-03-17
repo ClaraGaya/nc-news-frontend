@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import VoteButtons from './VoteButtons';
 
 
 const ArticleCard = function (props) {
@@ -7,8 +8,7 @@ const ArticleCard = function (props) {
     <div className='box'>
       <article className='media'>
         <div className='media-left'>
-          <p>Upvotes:</p>
-          {props.votes}
+          <VoteButtons votes={props.votes} handleClick={props.voteArticle}/>
         </div>
         <div className='media-content'>
           <div className='content'>
