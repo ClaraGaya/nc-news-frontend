@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchAllArticles} from '../actions/actions';
+import {fetchAllArticles, voteArticle} from '../actions/actions';
 import ArticleCard from './ArticleCard';
 import NavbarTopics from './NavbarTopics';
 import _ from 'underscore';
@@ -20,12 +20,12 @@ const ArticleList = React.createClass({
         <NavbarTopics />
 
         {!this.props.params.topic && _.map(getTopArticles(this.props.articles, 10), (article, i) => {
-          return <ArticleCard {...article} key={i}/>
+          return <ArticleCard {...article} voteArticle={this.props.voteArticle} key={i}/>
         })}
 
         {this.props.params.topic && _.map(this.props.articles.byId, (article, i) => {
           if (article.belongs_to === this.props.params.topic) {
-          return <ArticleCard {...article} key={i}/>
+          return <ArticleCard {...article} voteArticle={this.props.voteArticle} key={i}/>
          }
         })}
 
@@ -45,8 +45,9 @@ function mapDispatchToProps (dispatch) {
     getArticles: () => {
       dispatch(fetchAllArticles());
     },
-    
-    
+    voteArticle: (id, vote) => {
+      dispatch(voteArticle(id, vote));
+    }
   };
 }
 

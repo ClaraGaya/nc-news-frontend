@@ -18,6 +18,10 @@ const ArticlePage = React.createClass({
           <h3 className='title is-3'>{this.props.article.title}</h3>
           <p className=''><strong>{this.props.article.created_by}</strong></p>
           <p className=''>{this.props.article.body}</p>
+
+          <div>
+            {this.props.article.map}
+          </div>
         </div>
       );
     }

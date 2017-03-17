@@ -23,7 +23,14 @@ export function getTopArticles (articles, num) {
 
 function reducerArticles (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
-  
+
+   if (action.type === types.VOTE_ARTICLE_SUCCESS) {
+    newState.byId = Object.assign({}, newState.byId);
+    newState.byId[action.data._id] = action.data;
+    newState.loading = false;
+    newState.error = null;
+  }
+
   if (action.type === types.FETCH_ALL_ARTICLES_REQUEST) {
     newState.loading = true;
     newState.error = null;

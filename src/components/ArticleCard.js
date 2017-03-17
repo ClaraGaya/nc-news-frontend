@@ -8,7 +8,7 @@ const ArticleCard = function (props) {
     <div className='box'>
       <article className='media'>
         <div className='media-left'>
-          <VoteButtons votes={props.votes} handleClick={props.voteArticle}/>
+          <VoteButtons votes={props.votes} handleClick={props.voteArticle.bind(null, props._id)}/>
         </div>
         <div className='media-content'>
           <div className='content'>
