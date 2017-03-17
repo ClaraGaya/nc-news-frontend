@@ -4,6 +4,9 @@ import {fetchAllArticles} from '../actions/actions';
 import ArticleCard from './ArticleCard';
 import NavbarTopics from './NavbarTopics';
 
+import {getTopArticles} from '../reducer/articles.reducer';
+
+
 const ArticleList = React.createClass({
   componentDidMount () {
     this.props.getArticles();

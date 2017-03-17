@@ -121,3 +121,40 @@ export function fetchTopicsError (err) {
         data: err
     };
 }
+
+
+
+// Action creator for voting up and article
+export function voteArticle (id, vote){
+    return function (dispatch) {
+        dispatch(voteArticleRequest());
+        axios
+            .put(`${ROOT}/articles/${id}?vote=${vote}`)
+            then.(res => {
+                // do something with the response
+                dispatch(voteArticleSuccess(res.data));
+            })
+            .catch(err => {
+                // do something with error
+                dispatch(voteArticleError(err));
+            })
+    };
+}
+
+export function voteArticleRequest(){
+    return {
+        type: types.VOTE_ARTICLE_REQUEST
+    }
+}
+export function voteArticleSuccess(){
+    return {
+        type: types.VOTE_ARTICLE_SUCCESS,
+        data:data
+    }
+}
+export function voteArticleError(){
+    return {
+        type: types.VOTE_ARTICLE_ERROR,
+        data:err
+    }
+}
