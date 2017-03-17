@@ -156,3 +156,36 @@ function voteArticleError (error) {
     };
 }
 
+// Action creator for fetching comments
+export function fetchComments (id) {
+    return function (dispatch) {
+        dispatch(fetchCommentsRequest());
+        axios.put(`${ROOT}/articles/${id}/comments`)
+        .then((res) => {
+            dispatch(fetchCommentsSuccess(res.data));
+        })
+        .catch((error) => {
+            dispatch(fetchCommentsError(error.message));
+        });        
+    };
+}
+
+function fetchCommentsRequest () {
+    return {
+        type: types.FETCH_COMMENTS_REQUEST
+    };
+}
+
+function fetchCommentsSuccess (data) {
+    return {
+        type: types.FETCH_COMMENTS_SUCCESS,
+        data
+    };
+}
+
+function fetchCommentsError (error) {
+    return {
+        type: types.FETCH_COMMENTS_ERROR,
+        error
+    };
+}

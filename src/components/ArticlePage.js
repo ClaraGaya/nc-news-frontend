@@ -7,8 +7,6 @@ const ArticlePage = React.createClass({
     this.props.getArticle(this.props.params.article_id);
   },
   render () {
-    console.log(this.props.article)
-
     if (this.props.loading) return <p>'Loading...'</p>;
     if (this.props.error) return <p>404</p>;
     if (this.props.article) {

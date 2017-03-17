@@ -16,7 +16,6 @@ import reducer from './reducer/reducer';
 
 
 const store = createStore(reducer, applyMiddleware(thunk,createLogger()));
-console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>

@@ -19,7 +19,7 @@ const ArticleCard = function (props) {
         </div>
       </article>
     </div>
-  )
-}
+  );
+};
 
 export default ArticleCard;
