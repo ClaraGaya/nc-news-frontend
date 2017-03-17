@@ -26,9 +26,10 @@ const ArticleList = React.createClass({
         </span>
       </p>*/}
 
+
        {this.props.articles.map((article,i) => {
 
-        
+          
 
          if (!this.props.params.topic) {
           return <ArticleCard {...article} key={i}/>
