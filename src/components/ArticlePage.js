@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getArticle } from '../actions/actions.articles';
 
+import CommentList from './CommentList';
+
+
 class ArticlePage extends Component {
   componentDidMount () {
     this.props.getArticle(this.props.params.article_id);
@@ -17,9 +20,7 @@ class ArticlePage extends Component {
           <p className=''>by <strong>{this.props.article.created_by}</strong></p>
           <p className='article-body'>{this.props.article.body}</p>
 
-          <div>
-            {this.props.article.map}
-          </div>
+          <CommentList id={this.props._id}/>
         </div>
       );
     }

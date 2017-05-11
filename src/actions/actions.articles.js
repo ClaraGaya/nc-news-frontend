@@ -41,7 +41,6 @@ export function getArticlesError (err) {
 
 // Action creator for geting a single article by id
 export function getArticle (id){
-    console.log(id)
     return function (dispatch) {
         dispatch(getArticleRequest(id));
         axios
