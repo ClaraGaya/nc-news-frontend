@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html,body {height: 100%; margin:0; padding: 0;background-color: #fff;}
+body {
+    font-family: 'Inconsolata', sans-serif;
+    color: #323031;
+    font-size: 1.04rem;
+    line-height: 1.7;
+}
+h1,h2,h3, .title {font-family: 'Montserrat', sans-serif;font-weight: 700}
+@media screen and (min-width: 1180px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+.content a:not(.button) {
+    border-bottom: none;
+}
+.title, a, a:visited, a:hover, a:focus, .content a:not(.button):visited, .content a:not(.button):hover{color: #C3002F;}
+
+header {
+    padding: 25px 0 25px 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+header .title {color: #323031;}
+.logo {width: 25px; margin-right: 3px}
+.navbar-topics { margin-top: 15px;}
+.navbar-topics a { color: #323031; padding-right: 10px;}
+.navbar-topics a:hover {color: #C3002F;}
+.text-center { text-align: center;}
+
+.media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.media-left p {margin-top: -9px}
+.media-content { padding-left: 10px;}
+.media-content h3 { margin-bottom: 0 }
+
+.media-content a, 
+.media-content a:visited, 
+.media-content a:focus, .content a:not(.button):visited {
+    color: #323031;
+}
+.content a:not(.button):hover{color: #C3002F;}
+
+.media-content a:hover {color: #C3002F;}
+.media + .media { border-top: none }
+.article-body {margin-top: 40px}

@@ -5,17 +5,17 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import './css/bulma.css';
-import './css/font-awesome.css';
-import './css/front.css';
+import './assets/css/bulma.css';
+import './assets/css/font-awesome.css';
+import './assets/css/front.css';
 
 import App from './components/App';
 import ArticleList from './components/ArticleList';
 import ArticlePage from './components/ArticlePage';
-import reducer from './reducer/reducer';
-
+import reducer from './reducers/reducer';
 
 const store = createStore(reducer, applyMiddleware(thunk,createLogger()));
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>

@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {fetchAllTopics} from '../actions/actions';
 
-const NavbarTopics = React.createClass({
-
+class NavbarTopics extends Component {
     componentDidMount () {
         this.props.getTopics();
-    },
+    }
     render () {
         return (
             <div className="navbar-topics">
                 <nav className="block">
+                    <Link to={`/`}>Top News</Link>
                     {this.props.topics.map((topic,i) => {
                         return (
                             <Link 
                             key={i}
-                            className="button" 
                             to={`/topics/${topic.slug}`}>
                                 {topic.title}
                             </Link>
@@ -26,8 +25,7 @@ const NavbarTopics = React.createClass({
             </div>
         );
     }
-});
-
+};
 
 function mapDispatchToProps (dispatch) {
   return {

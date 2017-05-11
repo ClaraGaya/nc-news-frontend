@@ -21,29 +21,30 @@ export function getTopArticles (articles, num) {
     }).slice(0, num);
 }
 
-function reducerArticles (prevState = initialState, action) {
+function getArticles (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
-   if (action.type === types.VOTE_ARTICLE_SUCCESS) {
-    newState.byId = Object.assign({}, newState.byId);
-    newState.byId[action.data._id] = action.data;
+  if (action.type === types.VOTE_ARTICLE_SUCCESS) {
+    const id = action.payload._id;
     newState.loading = false;
-    newState.error = null;
+    newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
   }
-
-  if (action.type === types.FETCH_ALL_ARTICLES_REQUEST) {
+  if (action.type === types.VOTE_ARTICLE_ERROR) {
+    newState.loading = false;
+  }
+  if (action.type === types.GET_ARTICLES_REQUEST) {
     newState.loading = true;
     newState.error = null;
   }
 
-  if (action.type === types.FETCH_ALL_ARTICLES_SUCCESS) {
-    newState.byId = action.data;
+  if (action.type === types.GET_ARTICLES_SUCCESS) {
+    newState.byId = action.payload;
     newState.loading = true;
-    newState.byId = normaliseData(action.data);    
+    newState.byId = normaliseData(action.payload);    
   }
 
-  if (action.type === types.FETCH_ALL_ARTICLES_ERROR) {
-    newState.error = action.data;
+  if (action.type === types.GET_ARTICLES_ERROR) {
+    newState.error = action.payload;
     newState.loading = false;
   }
 
@@ -51,4 +52,4 @@ function reducerArticles (prevState = initialState, action) {
   return newState;
 }
 
-export default reducerArticles;
+export default getArticles;

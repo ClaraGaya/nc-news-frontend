@@ -3,86 +3,6 @@ import axios from 'axios';
 
 import {ROOT} from '../../config';
 
-// Action creator for fetching articles
-export function fetchAllArticles (){
-    return function (dispatch) {
-        dispatch(fetchAllArticlesRequest());
-        axios
-            .get(`${ROOT}/articles`)
-            .then(res => {
-                // do something with the response
-                dispatch(fetchAllArticlesSuccess(res.data.articles));
-            })
-            .catch(err => {
-                // do something with error
-                dispatch(fetchAllArticlesError(err));
-            });
-    };
-}
-
-export function fetchAllArticlesRequest () {
-    return {
-        type: types.FETCH_ALL_ARTICLES_REQUEST
-    };
-}
-
-export function fetchAllArticlesSuccess (articles) {
-    return {
-        type: types.FETCH_ALL_ARTICLES_SUCCESS,
-        data: articles
-    };
-}
-
-export function fetchAllArticlesError (err) {
-    return {
-        type: types.FETCH_ALL_ARTICLES_ERROR,
-        data: err
-    };
-}
-
-
-// Action creator for fetching one specific article
-export function fetchArticle (id){
-    console.log(id)
-    return function (dispatch) {
-        dispatch(fetchArticleRequest(id));
-        axios
-            .get(`${ROOT}/articles/`)
-            .then(res => {
-                // do something with the response
-
-                dispatch(fetchArticleSuccess(res.data.articles.filter((article) => {
-                    return article._id === id;
-                }) 
-                ));
-            })
-            .catch(err => {
-                // do something with error
-                dispatch(fetchArticleError(err));
-            })
-    };
-}
-
-export function fetchArticleRequest () {
-    return {
-        type: types.FETCH_ARTICLE_REQUEST
-    };
-}
-
-export function fetchArticleSuccess (article) {
-    return {
-        type: types.FETCH_ARTICLE_SUCCESS,
-        data: article
-    };
-}
-
-export function fetchArticleError (err) {
-    return {
-        type: types.FETCH_ARTICLE_ERROR,
-        data: err
-    };
-}
-
 
 // Action creator for fetching topics
 export function fetchAllTopics () {
@@ -122,39 +42,7 @@ export function fetchTopicsError (err) {
     };
 }
 
-// Action creator for voting articles
-export function voteArticle (id, vote) {
-    return function (dispatch) {
-        dispatch(voteArticleRequest());
-        axios.put(`${ROOT}/articles/${id}?vote=${vote}`)
-        .then((res) => {
-            dispatch(voteArticleSuccess(res.data));
-        })
-        .catch((error) => {
-            dispatch(voteArticleError(error.message));
-        });        
-    };
-}
 
-function voteArticleRequest () {
-    return {
-        type: types.VOTE_ARTICLE_REQUEST
-    };
-}
-
-function voteArticleSuccess (data) {
-    return {
-        type: types.VOTE_ARTICLE_SUCCESS,
-        data
-    };
-}
-
-function voteArticleError (error) {
-    return {
-        type: types.VOTE_ARTICLE_ERROR,
-        error
-    };
-}
 
 // Action creator for fetching comments
 export function fetchComments (id) {

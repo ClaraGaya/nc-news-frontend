@@ -1,23 +1,19 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {fetchAllArticles, voteArticle} from '../actions/actions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ArticleCard from './ArticleCard';
-import NavbarTopics from './NavbarTopics';
 import _ from 'underscore';
 
-import { getTopArticles } from '../reducer/articles.reducer';
+import { getArticles, voteArticle } from '../actions/actions.articles';
+import { getTopArticles } from '../reducers/articles';
 
 
-const ArticleList = React.createClass({
+class ArticleList extends Component {
   componentDidMount () {
     this.props.getArticles();
-  },
+  }
   render () {
-
     return (
       <div id='ArticleList' className="container">
-
-        <NavbarTopics />
 
         {!this.props.params.topic && _.map(getTopArticles(this.props.articles, 10), (article, i) => {
           return <ArticleCard {...article} voteArticle={this.props.voteArticle} key={i}/>
@@ -37,13 +33,12 @@ const ArticleList = React.createClass({
       </div>
     );
   }
-
-});
+}
 
 function mapDispatchToProps (dispatch) {
   return {
     getArticles: () => {
-      dispatch(fetchAllArticles());
+      dispatch(getArticles());
     },
     voteArticle: (id, vote) => {
       dispatch(voteArticle(id, vote));

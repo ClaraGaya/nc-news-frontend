@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import reducerArticles from './articles.reducer';
-import reducerTopics from './topics.reducer';
-import reducerSpecificArticle from './specific.article.reducer';
-import reducerComments from './comments.reducer';
+import reducerArticles from './articles';
+import reducerTopics from './topics';
+import reducerSpecificArticle from './article';
+import reducerComments from './comments';
 
 
 

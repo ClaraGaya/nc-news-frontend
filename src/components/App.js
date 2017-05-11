@@ -1,22 +1,20 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
 
+import NavbarTopics from './NavbarTopics';
 
-
-const App = React.createClass({
-  render: function () {
+export default class App extends Component {
+  render() {
     return (
-      <div>
+      <div className="container">
         <header>
-          <div className="container">
-            <Link to ="/"><img className="logo" src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png" alt="Northcoders logo"/></Link>
-          </div>
+            <Link to ="/"><img className="logo" src={require('../assets/img/logo.png')} alt="Northcoders logo"/><strong className="title is-3">orthcoders news</strong></Link>
+            <NavbarTopics />
         </header>
-        {this.props.children}
-
+        <div className="main">
+          {this.props.children}
+        </div>
       </div>
     );
   }
-});
-
-export default App;
+}
