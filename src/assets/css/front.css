@@ -52,3 +52,10 @@ header .title {color: #323031;}
 .media-content a:hover {color: #C3002F;}
 .media + .media { border-top: none }
 .article-body {margin-top: 40px}
+
+textarea {
+    width: 100%;
+    display: block;
+    margin: 25px 0;
+    padding: 15px
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getArticle } from '../actions/actions.articles';
 
 import CommentList from './CommentList';
+import AddComment from './AddComment'
 
 
 class ArticlePage extends Component {
@@ -19,8 +20,8 @@ class ArticlePage extends Component {
           <h3 className='title is-3'>{this.props.article.title}</h3>
           <p className=''>by <strong>{this.props.article.created_by}</strong></p>
           <p className='article-body'>{this.props.article.body}</p>
-
-          <CommentList id={this.props._id}/>
+          <AddComment  articleId={this.props.article._id} />
+          <CommentList articleId={this.props.article._id}/>
         </div>
       );
     }

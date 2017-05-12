@@ -36,6 +36,16 @@ function getComments (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.ADD_COMMENT_SUCCESS) {
+    const id = action.payload._id;
+    newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
+  }
+
+  if (action.type === types.ADD_COMMENT_ERROR) {
+    newState.error = action.payload;
+    newState.loading = false;
+  }
+
   return newState;
 }
 

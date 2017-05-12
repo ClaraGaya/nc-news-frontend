@@ -1,5 +1,6 @@
 import * as types from './types';
 import axios from 'axios';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 import {ROOT} from '../../config';
 
@@ -46,7 +47,6 @@ export function voteComment (articleId, id, vote) {
         dispatch(voteCommentRequest());
         axios.put(`${ROOT}/comments/${id}?vote=${vote}`)
         .then((res) => {
-            console.log('vote comment success',res)
             dispatch(getComments(articleId));
         })
         .catch((error) => {
@@ -77,12 +77,12 @@ function voteCommentError (error) {
 
 
 // Action creator for adding comments
-export function addComment (id) {
+export function addComment (id, comment) {
     return function (dispatch) {
         dispatch(addCommentRequest());
-        axios.post(`${ROOT}/articles/${id}/comments`)
+        axios.post(`${ROOT}/articles/${id}/comments`, {"comment": comment})
         .then((res) => {
-            dispatch(addCommentSuccess(res));
+            dispatch(addCommentSuccess(res.data.comment));
         })
         .catch((error) => {
             dispatch(addCommentError(error.message));
