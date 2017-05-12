@@ -46,6 +46,11 @@ function getComments (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.REMOVE_COMMENT_ERROR) {
+    newState.error = action.payload;
+    newState.loading = false;
+  }
+
   return newState;
 }
 

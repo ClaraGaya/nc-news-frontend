@@ -111,12 +111,12 @@ function addCommentError (error) {
 }
 
 // Action creator for removing comments
-export function removeComment (id) {
+export function removeComment (commentId, articleId) {
     return function (dispatch) {
         dispatch(removeCommentRequest());
-        axios.delete(`${ROOT}/articles/${id}/comments`)
+        axios.delete(`${ROOT}/comments/${commentId}`)
         .then((res) => {
-            dispatch(removeCommentSuccess(res.data));
+            dispatch(getComments(articleId));
         })
         .catch((error) => {
             dispatch(removeCommentError(error.message));

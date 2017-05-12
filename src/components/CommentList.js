@@ -15,7 +15,7 @@ class CommentList extends Component {
       <div id='CommentList' className="container">
 
         {_.map(this.props.comments.byId, (comment, i) => {
-          return <CommentCard {...comment} voteComment={this.props.voteComment} key={i}/>
+          return <CommentCard {...comment} voteComment={this.props.voteComment} removeComment={this.props.removeComment} key={i}/>
         })}
 
       </div>
@@ -32,12 +32,9 @@ function mapDispatchToProps (dispatch) {
     voteComment: (articleId, id, vote) => {
       dispatch(voteComment(articleId, id, vote));
     },
-//     addComment: (id) => {
-//       dispatch(addComment(id));
-//     },
-//     removeComment: (id) => {
-//       dispatch(removeComment(id));
-//     }
+    removeComment: (commentId, articleId) => {
+      dispatch(removeComment(commentId, articleId));
+    }
   };
 }
 

@@ -20,6 +20,7 @@ class AddComment extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.addComment(this.props.articleId, this.state.comment);
+        this.setState({comment: ''});
     }
 
     render () {
