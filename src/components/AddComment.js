@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { addComment } from '../actions/actions.comments';
 
@@ -39,6 +41,10 @@ class AddComment extends Component {
     }
 }
 
+AddComment.propTypes = {
+  addComment: PropTypes.func,
+  comment: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
   return {

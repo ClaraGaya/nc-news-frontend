@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 import NavbarTopics from './NavbarTopics';
 
@@ -17,3 +18,8 @@ export default class App extends Component {
     );
   }
 }
+
+
+App.propTypes = {
+  children: PropTypes.element.isRequired,
+};

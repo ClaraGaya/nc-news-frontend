@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import _ from 'underscore';
 
@@ -50,6 +52,12 @@ class ArticleList extends Component {
     );
   }
 }
+
+ArticleList.propTypes = {
+  getArticles: PropTypes.func,
+  voteArticle: PropTypes.func,
+  articles: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
   return {

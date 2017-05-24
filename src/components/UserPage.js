@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/actions.users';
-
 import UserCard from './UserCard';
 import ArticleList from './ArticleList'
 
@@ -28,6 +28,11 @@ class UserPage extends Component {
         if (this.props.loading) return <div className="container"><p>'Loading...'</p></div>;
     }     
 }
+
+UserPage.propTypes = {
+  getUser: PropTypes.func,
+  user: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
     return {

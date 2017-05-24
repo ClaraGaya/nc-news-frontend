@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 
 
-class UserCard extends Component {
+export default class UserCard extends Component {
     render() {
         return (
             <article className='media'>
@@ -19,5 +19,3 @@ class UserCard extends Component {
         )
     }
 };
-
-export default UserCard;

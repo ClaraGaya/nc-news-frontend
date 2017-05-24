@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { getTopics } from '../actions/actions.topics';
@@ -25,6 +26,11 @@ class NavbarTopics extends Component {
             </div>
         );
     }
+};
+
+NavbarTopics.propTypes = {
+  getTopics: PropTypes.func,
+  topics: PropTypes.object,
 };
 
 function mapDispatchToProps (dispatch) {

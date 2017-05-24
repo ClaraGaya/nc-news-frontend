@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import _ from 'underscore';
 import CommentCard from './CommentCard';
@@ -51,6 +53,12 @@ class CommentList extends Component {
   }
 }
 
+CommentList.propTypes = {
+  getComments: PropTypes.func,
+  voteComment: PropTypes.func,
+  removeComment: PropTypes.func,
+  comments: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
   return {

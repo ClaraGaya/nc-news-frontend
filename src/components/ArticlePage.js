@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { getArticle } from '../actions/actions.articles';
 
@@ -29,6 +31,12 @@ class ArticlePage extends Component {
     }
   }     
 }
+
+ArticlePage.propTypes = {
+  getArticle: PropTypes.func,
+  article: PropTypes.object,
+};
+
 function mapDispatchToProps (dispatch) {
   return {
     getArticle: (id) => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserCard from './UserCard';
 import _ from 'underscore';
@@ -20,6 +21,11 @@ class UserList extends Component {
     );
   }
 }
+
+UserList.propTypes = {
+  getUsers: PropTypes.func,
+  users: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
   return {

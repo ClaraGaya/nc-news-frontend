@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+
 import { Link } from 'react-router';
 import VoteButtons from './VoteButtons';
 
-
-
-class CommentCard extends Component {
+export default class CommentCard extends Component {
   render() {
     const date = new Date (this.props.created_at);
-    console.log(date);
     return (
       <article className='media'>
         <div className='media-left'>
@@ -28,4 +26,4 @@ class CommentCard extends Component {
   }
 }
 
-export default CommentCard;
+

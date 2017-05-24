@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
@@ -63,6 +65,11 @@ class SelectUser extends Component {
     );
   }
 }
+
+SelectUser.propTypes = {
+  getUsers: PropTypes.func,
+  users: PropTypes.object,
+};
 
 function mapDispatchToProps (dispatch) {
   return {

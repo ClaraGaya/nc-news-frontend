@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import ArticleList from './ArticleList';
 import UserList from './UserList';
 import SelectUser from './SelectUser';
 
 
-class HomePage extends Component {
+export default class HomePage extends Component {
   render () {
     return (
       <div className="container">
@@ -27,4 +28,7 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  SelectUser: PropTypes.element,
+  ArticleList: PropTypes.element,
+};
