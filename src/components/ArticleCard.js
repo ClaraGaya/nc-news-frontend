@@ -11,8 +11,8 @@ const ArticleCard = function (props) {
       </div>
       <div className='media-content'>
         <div className='content'>
-          <h3 className='is-3'>
-            <Link to={`/articles/${props._id}`}>{props.title}</Link>
+          <h3 className='is-4'>
+            <Link to={`/article/${props._id}`}>{props.title}</Link>
           </h3>
           <span>by {props.created_by}</span>
         </div>

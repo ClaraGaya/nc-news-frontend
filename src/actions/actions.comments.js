@@ -5,7 +5,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 import {ROOT} from '../../config';
 
 
-// Action creator for geting all the articles
+// Action creator for fetching comments
 export function getComments (id){
     return function (dispatch) {
         dispatch(getCommentsRequest());

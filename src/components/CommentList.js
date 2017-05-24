@@ -7,18 +7,46 @@ import { getComments, voteComment, addComment, removeComment } from '../actions/
 
 
 class CommentList extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      mostVoted: false,
+      lastOnes: true
+    }
+  }
   componentDidMount () {
     this.props.getComments(this.props.articleId);
   }
   render () {
+    const sizeComments = Object.keys(this.props.comments.byId).length;
     return (
-      <div id='CommentList' className="container">
+      <section className="bg">
+        <div className="container">
+          <h4>{sizeComments} Comments</h4>
+          <p>sort by:</p>
+          <select>
+            <option>most voted</option>
+            <option>by user</option>
+          </select>
+          {/*{selectByUser
+            (
+              <select>
+                <option>most voted</option>
+              </select>
+            )
+          }*/}
+          
+          {_.map(this.props.comments.byId, (comment, i) => {
+            return <CommentCard {...comment} voteComment={this.props.voteComment} removeComment={this.props.removeComment} key={i}/>
+          })}
 
-        {_.map(this.props.comments.byId, (comment, i) => {
-          return <CommentCard {...comment} voteComment={this.props.voteComment} removeComment={this.props.removeComment} key={i}/>
-        })}
-
-      </div>
+          {/*
+          {mostVoted && _.map(getTopComments(this.props.comments, 10), (comment, i) => {
+              return <CommentCard {...comment} voteComment={this.props.voteComment} removeComment={this.props.removeComment} key={i}/>
+            })}
+          */}
+        </div>
+      </section>
     );
   }
 }

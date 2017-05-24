@@ -26,10 +26,15 @@ class AddComment extends Component {
     render () {
         console.log(this.props);
         return (
-            <form id='AddComment' className="container" onSubmit={this.handleSubmit}>
-                <textarea rows="6" value ={this.state.comment} onChange = {this.updateState}></textarea>
-                <button type='submit'>Add Comment</button>
-            </form>
+            <section className="bg">
+                <div className="container">
+                    <h4>Have your say, give us a comment!</h4>
+                    <form id='AddComment' onSubmit={this.handleSubmit}>
+                        <textarea rows="6" value ={this.state.comment} onChange = {this.updateState}></textarea>
+                        <button type='submit'>Add Comment</button>
+                    </form>
+                </div>
+            </section>
         );
     }
 }

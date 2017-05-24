@@ -13,6 +13,14 @@ function normaliseData (data) {
     }, {});
 }
 
+export function getTopComments (comments, num) {
+    return Object.keys(comments.byId).reduce(function (acc, id) {
+        return acc.concat(comments.byId[id]);
+    }, []).sort(function (a, b) {
+        return b.votes - a.votes;
+    }).slice(0, num);
+}
+
 function getComments (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 

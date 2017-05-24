@@ -1,17 +1,21 @@
 import {combineReducers} from 'redux';
 
-import reducerArticles from './articles';
 import reducerTopics from './topics';
-import reducerSpecificArticle from './article';
+import reducerArticles from './articles';
+import reducerArticle from './article';
 import reducerComments from './comments';
+import reducerUsers from './users';
+import reducerUser from './user';
 
 
 
 const reducer = combineReducers({
-    articles: reducerArticles,
     topics: reducerTopics,
-    article: reducerSpecificArticle,
-    comments: reducerComments
+    articles: reducerArticles,
+    article: reducerArticle,
+    comments: reducerComments,
+    users: reducerUsers,
+    user: reducerUser
 });
 
 export default reducer;

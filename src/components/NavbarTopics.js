@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
-import {fetchAllTopics} from '../actions/actions';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { getTopics } from '../actions/actions.topics';
 
 class NavbarTopics extends Component {
     componentDidMount () {
@@ -16,7 +16,7 @@ class NavbarTopics extends Component {
                         return (
                             <Link 
                             key={i}
-                            to={`/topics/${topic.slug}`}>
+                            to={`/articles/${topic.slug}`}>
                                 {topic.title}
                             </Link>
                         );
@@ -30,7 +30,7 @@ class NavbarTopics extends Component {
 function mapDispatchToProps (dispatch) {
   return {
     getTopics: () => {
-      dispatch(fetchAllTopics());
+      dispatch(getTopics());
     }
   };
 }
