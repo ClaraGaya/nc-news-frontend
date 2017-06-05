@@ -11,11 +11,13 @@ function getUser ( prevState = initialState, action) {
     
     if (action.type === types.GET_USER_REQUEST) {
         newState.loading = true;
+        newState.error = null;
     }
 
     if (action.type === types.GET_USER_SUCCESS) {
         newState.user = action.payload;
         newState.loading = false;
+        newState.error = null;
     }
 
     if (action.type === types.GET_USER_ERROR) {

@@ -23,7 +23,8 @@ function getUsers (prevState = initialState, action) {
 
   if (action.type === types.GET_USERS_SUCCESS) {
     newState.byId = action.payload;
-    newState.loading = true;
+    newState.loading = false;
+    newState.error = null;
     newState.byId = normaliseData(action.payload);    
   }
 

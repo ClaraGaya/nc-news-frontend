@@ -1,4 +1,5 @@
 import * as types from '../actions/types';
+import _ from 'underscore';
 
 const initialState = {
   byId: {},
@@ -24,9 +25,14 @@ export function getTopComments (comments, num) {
 function getComments (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
+  if (action.type === types.GET_COMMENTS_REQUEST) {
+    newState.loading = true;
+    newState.error = null;
+  }
+
   if (action.type === types.GET_COMMENTS_SUCCESS) {
     newState.byId = action.payload;
-    newState.loading = true;
+    newState.loading = false;
     newState.byId = normaliseData(action.payload); 
   }
 
@@ -44,7 +50,14 @@ function getComments (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.ADD_COMMENT_REQUEST) {
+    newState.loading = true;
+    newState.error = null;
+    return newState;
+  }
+
   if (action.type === types.ADD_COMMENT_SUCCESS) {
+    newState.loading = false;
     const id = action.payload._id;
     newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
   }
@@ -52,6 +65,20 @@ function getComments (prevState = initialState, action) {
   if (action.type === types.ADD_COMMENT_ERROR) {
     newState.error = action.payload;
     newState.loading = false;
+  }
+
+  if (action.type === types.REMOVE_COMMENT_REQUEST) {
+    newState.error = action.payload;
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.REMOVE_COMMENT_SUCCESS) {
+    newState.loading = false;
+    newState.byId = normaliseData(_.filter(prevState.byId, (item, i) => {
+      return item._id !== action.payload;
+    }))
+    return newState;
   }
 
   if (action.type === types.REMOVE_COMMENT_ERROR) {

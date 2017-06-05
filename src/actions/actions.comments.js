@@ -116,7 +116,7 @@ export function removeComment (commentId, articleId) {
         dispatch(removeCommentRequest());
         axios.delete(`${ROOT}/comments/${commentId}`)
         .then((res) => {
-            dispatch(getComments(articleId));
+            dispatch(removeCommentSuccess(commentId));
         })
         .catch((error) => {
             dispatch(removeCommentError(error.message));
@@ -130,10 +130,10 @@ function removeCommentRequest () {
     };
 }
 
-function removeCommentSuccess (comment) {
+function removeCommentSuccess (id) {
     return {
         type: types.REMOVE_COMMENT_SUCCESS,
-        payload: comment
+        payload: id
     };
 }
 

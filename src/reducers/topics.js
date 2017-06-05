@@ -11,11 +11,13 @@ function reducerTopics (prevState = initialState, action) {
   
   if (action.type === types.GET_TOPICS_REQUEST) {
     newState.loading = true;
+    newState.error = null;
   }
 
   if (action.type === types.GET_TOPICS_SUCCESS) {
     newState.data = action.data;
-    newState.loading = true;
+    newState.loading = false;
+    newState.error = null;
   }
 
   if (action.type === types.GET_TOPICS_ERROR) {

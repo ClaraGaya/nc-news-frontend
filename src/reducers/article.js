@@ -11,11 +11,13 @@ function getArticle ( prevState = initialState, action) {
     
     if (action.type === types.GET_ARTICLE_REQUEST) {
         newState.loading = true;
+        newState.error = null;
     }
 
     if (action.type === types.GET_ARTICLE_SUCCESS) {
         newState.article = action.payload;
         newState.loading = false;
+        newState.error = null;
     }
 
     if (action.type === types.GET_ARTICLE_ERROR) {

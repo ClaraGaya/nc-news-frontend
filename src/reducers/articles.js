@@ -24,14 +24,6 @@ export function getTopArticles (articles, num) {
 function getArticles (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
-  if (action.type === types.VOTE_ARTICLE_SUCCESS) {
-    const id = action.payload._id;
-    newState.loading = false;
-    newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
-  }
-  if (action.type === types.VOTE_ARTICLE_ERROR) {
-    newState.loading = false;
-  }
   if (action.type === types.GET_ARTICLES_REQUEST) {
     newState.loading = true;
     newState.error = null;
@@ -39,12 +31,22 @@ function getArticles (prevState = initialState, action) {
 
   if (action.type === types.GET_ARTICLES_SUCCESS) {
     newState.byId = action.payload;
-    newState.loading = true;
+    newState.loading = false;
+    newState.error = null;
     newState.byId = normaliseData(action.payload);    
   }
 
   if (action.type === types.GET_ARTICLES_ERROR) {
     newState.error = action.payload;
+    newState.loading = false;
+  }
+
+  if (action.type === types.VOTE_ARTICLE_SUCCESS) {
+    const id = action.payload._id;
+    newState.loading = false;
+    newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
+  }
+  if (action.type === types.VOTE_ARTICLE_ERROR) {
     newState.loading = false;
   }
 
