@@ -92,22 +92,22 @@ export function voteArticle (id, vote) {
     };
 }
 
-function voteArticleRequest () {
+export function voteArticleRequest () {
     return {
         type: types.VOTE_ARTICLE_REQUEST
     };
 }
 
-function voteArticleSuccess (votes) {
+export function voteArticleSuccess (votes) {
     return {
         type: types.VOTE_ARTICLE_SUCCESS,
         payload: votes
     };
 }
 
-function voteArticleError (error) {
+export function voteArticleError (error) {
     return {
         type: types.VOTE_ARTICLE_ERROR,
-        error
+        payload: error
     };
 }

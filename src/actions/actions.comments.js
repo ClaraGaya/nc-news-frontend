@@ -55,23 +55,23 @@ export function voteComment (articleId, id, vote) {
     };
 }
 
-function voteCommentRequest () {
+export function voteCommentRequest () {
     return {
         type: types.VOTE_COMMENT_REQUEST
     };
 }
 
-function voteCommentSuccess (votes) {
+export function voteCommentSuccess (votes) {
     return {
         type: types.VOTE_COMMENT_SUCCESS,
         payload: votes
     };
 }
 
-function voteCommentError (error) {
+export function voteCommentError (error) {
     return {
         type: types.VOTE_COMMENT_ERROR,
-        error
+        payload: error
     };
 }
 
@@ -90,23 +90,23 @@ export function addComment (id, comment) {
     };
 }
 
-function addCommentRequest () {
+export function addCommentRequest () {
     return {
         type: types.ADD_COMMENT_REQUEST
     };
 }
 
-function addCommentSuccess (comment) {
+export function addCommentSuccess (comment) {
     return {
         type: types.ADD_COMMENT_SUCCESS,
         payload: comment
     };
 }
 
-function addCommentError (error) {
+export function addCommentError (error) {
     return {
         type: types.ADD_COMMENT_ERROR,
-        error
+        payload: error
     };
 }
 
@@ -124,22 +124,22 @@ export function removeComment (commentId, articleId) {
     };
 }
 
-function removeCommentRequest () {
+export function removeCommentRequest () {
     return {
         type: types.REMOVE_COMMENT_REQUEST
     };
 }
 
-function removeCommentSuccess (id) {
+export function removeCommentSuccess (id) {
     return {
         type: types.REMOVE_COMMENT_SUCCESS,
         payload: id
     };
 }
 
-function removeCommentError (error) {
+export function removeCommentError (error) {
     return {
         type: types.REMOVE_COMMENT_ERROR,
-        error
+        payload: error
     };
 }

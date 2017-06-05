@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "mocha ./spec --compilers js:babel-core/register",
+    "test": "mocha ./src/spec --compilers js:babel-core/register",
     "dev": "webpack-dev-server",
     "lint": "eslint ./"
   },
