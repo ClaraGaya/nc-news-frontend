@@ -6,7 +6,7 @@ const initialState = {
   error: null
 };
 
-function reducerTopics (prevState = initialState, action) {
+export function reducerTopics (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
   
   if (action.type === types.GET_TOPICS_REQUEST) {
@@ -29,4 +29,3 @@ function reducerTopics (prevState = initialState, action) {
   return newState;
 }
 
-export default reducerTopics;

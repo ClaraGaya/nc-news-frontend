@@ -22,7 +22,7 @@ export function getTopComments (comments, num) {
     }).slice(0, num);
 }
 
-function getComments (prevState = initialState, action) {
+export function reducerComments (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
   if (action.type === types.GET_COMMENTS_REQUEST) {
@@ -41,13 +41,21 @@ function getComments (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.VOTE_COMMENT_REQUEST) {
+    newState.loading = true;
+    newState.error = null;
+  }
+
   if (action.type === types.VOTE_COMMENT_SUCCESS) {
     const id = action.payload._id;
     newState.loading = false;
+    newState.byId = Object.assign({}, prevState.byId, action.payload);
     newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
   }
   if (action.type === types.VOTE_COMMENT_ERROR) {
     newState.loading = false;
+    newState.error = action.payload;
+    return newState;
   }
 
   if (action.type === types.ADD_COMMENT_REQUEST) {
@@ -59,17 +67,20 @@ function getComments (prevState = initialState, action) {
   if (action.type === types.ADD_COMMENT_SUCCESS) {
     newState.loading = false;
     const id = action.payload._id;
+    newState.byId = Object.assign({}, prevState.byId);
     newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
   }
 
   if (action.type === types.ADD_COMMENT_ERROR) {
     newState.error = action.payload;
     newState.loading = false;
+    return newState;
   }
 
   if (action.type === types.REMOVE_COMMENT_REQUEST) {
     newState.error = action.payload;
     newState.loading = true;
+    newState.error = null;
     return newState;
   }
 
@@ -84,9 +95,9 @@ function getComments (prevState = initialState, action) {
   if (action.type === types.REMOVE_COMMENT_ERROR) {
     newState.error = action.payload;
     newState.loading = false;
+    return newState;
   }
 
   return newState;
 }
 
-export default getComments;

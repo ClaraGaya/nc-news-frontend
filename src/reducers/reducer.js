@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
-import reducerTopics from './topics';
-import reducerArticles from './articles';
-import reducerArticle from './article';
-import reducerComments from './comments';
-import reducerUsers from './users';
-import reducerUser from './user';
+import {reducerTopics} from './topics';
+import {reducerArticles} from './articles';
+import {reducerArticle} from './article';
+import {reducerComments} from './comments';
+import {reducerUsers} from './users';
+import {reducerUser} from './user';
 
 
 

@@ -21,7 +21,7 @@ export function getTopArticles (articles, num) {
     }).slice(0, num);
 }
 
-function getArticles (prevState = initialState, action) {
+export function reducerArticles (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
   if (action.type === types.GET_ARTICLES_REQUEST) {
@@ -40,10 +40,14 @@ function getArticles (prevState = initialState, action) {
     newState.error = action.payload;
     newState.loading = false;
   }
-
+  if (action.type === types.VOTE_ARTICLE_REQUEST) {
+    newState.loading = true;
+    newState.error = null;
+  }
   if (action.type === types.VOTE_ARTICLE_SUCCESS) {
     const id = action.payload._id;
     newState.loading = false;
+    newState.byId = Object.assign({}, prevState.byId);
     newState.byId[id] = Object.assign({}, newState.byId[id], action.payload);
   }
   if (action.type === types.VOTE_ARTICLE_ERROR) {
@@ -54,4 +58,3 @@ function getArticles (prevState = initialState, action) {
   return newState;
 }
 
-export default getArticles;

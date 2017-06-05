@@ -6,14 +6,14 @@ const initialState = {
   error: null
 };
 
-function normaliseData (data) {
+export function normaliseData (data) {
     return data.reduce(function (acc, item) {
         acc[item._id] = item;
         return acc;
     }, {});
 }
 
-function getUsers (prevState = initialState, action) {
+export function reducerUsers (prevState = initialState, action) {
   const newState = Object.assign({}, prevState);
 
   if (action.type === types.GET_USERS_REQUEST) {
@@ -37,4 +37,3 @@ function getUsers (prevState = initialState, action) {
   return newState;
 }
 
-export default getUsers;

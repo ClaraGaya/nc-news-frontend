@@ -6,7 +6,7 @@ const initialState = {
     error: null
 };
 
-function getUser ( prevState = initialState, action) {
+export function reducerUser ( prevState = initialState, action) {
     const newState = Object.assign({}, prevState)
     
     if (action.type === types.GET_USER_REQUEST) {
@@ -27,6 +27,3 @@ function getUser ( prevState = initialState, action) {
 
     return newState;
 }
-
-
-export default getUser;

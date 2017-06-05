@@ -6,7 +6,7 @@ const initialState = {
     error: null
 };
 
-function getArticle ( prevState = initialState, action) {
+export function reducerArticle ( prevState = initialState, action) {
     const newState = Object.assign({}, prevState)
     
     if (action.type === types.GET_ARTICLE_REQUEST) {
@@ -27,6 +27,3 @@ function getArticle ( prevState = initialState, action) {
 
     return newState;
 }
-
-
-export default getArticle;
