@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha ./src/spec --compilers js:babel-core/register",
     "dev": "webpack-dev-server",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "start": "node ./server/index.js"
   },
   "author": "",
   "license": "ISC",
