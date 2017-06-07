@@ -45,7 +45,7 @@ Simple! open your favorite browser and go to http://localhost:9090/
 npm test
 ```
 
-## Built With Love
+## Built With
 
 [React](https://facebook.github.io/react-native/) - Front End web framework
 [Redux](http://redux.js.org/) - State container for JavaScript apps
@@ -58,3 +58,7 @@ Mocha - A test framework running on node.js
 
 
 Redux guys have their website in spanish, check it out! [Redux in spanish](http://es.redux.js.org/)
+
+### Deployment
+
+Heroku: [ncnews-app.herokuapp.com] (https://ncnews-app.herokuapp.com/)
